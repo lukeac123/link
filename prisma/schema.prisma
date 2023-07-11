@@ -1,0 +1,76 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  //set defualt of the id to a uuid - a type of unique identifier
+  id        String    @id @default(uuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  email     String    @unique
+  password  String
+  firstName String?
+  lastName  String?
+  projects  Project[]
+  tasks     Task[]
+}
+
+model Project {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ownerId String
+  //owner is a type of user, which is realted to the owner id and is mapped to the id of the user
+  owner   User   @relation(fields: [ownerId], references: [id])
+
+  name        String
+  description String?
+  due         DateTime?
+  tasks       Task[]
+  //soft delete, when a user deletes a project, if it just flagged as deleted to can be filtered out in the query. It still exists in the db
+  deleted     Boolean   @default(false)
+
+  //The combination of ownerId and name must be unique, 2 projects of the same owner can't have the same name
+  @@unique([ownerId, name])
+  //Writing an Index enables Prisma to quickly find the data instead of having top scan the whole database 
+  //We'll write a query to find the porjects with of a given owner id
+  @@index([ownerId, id])
+}
+
+//enum, is a set of different values that never change
+enum TASK_STATUS {
+  NOT_STARTED
+  STARTED
+  COMPLETED
+}
+
+model Task {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ownerId String
+  owner   User   @relation(fields: [ownerId], references: [id])
+
+  projectId String
+  //project is a type of user, which is realted to the project id and is mapped to the id of the project
+  project   Project @relation(fields: [projectId], references: [id])
+
+  status      TASK_STATUS @default(NOT_STARTED)
+  name        String
+  description String
+
+  due     DateTime?
+  deleted Boolean   @default(false)
+
+  @@index([ownerId])
+}
