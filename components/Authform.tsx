@@ -1,4 +1,5 @@
-import { Input } from "./Input";
+'use client'
+import Input from "./Input";
 import Card from "./Card";
 import Button from "./Button";
 import Link from "next/link"
@@ -28,7 +29,7 @@ const registerContent = {
   //Initial state created outside the component, so it can eaily be reset if needed
   const initial = { email: "", password: "", firstName: "", lastName: "" };
 
-  const AuthForm = ({mode}) => {
+  export default function AuthForm ({mode}) {
     const [formState, setFormState] = useState(initial)
     const router = useRouter()
 
@@ -37,13 +38,14 @@ const registerContent = {
     const handleSubmit = async (e) => {
         // Unless the event is specifically handled nothing will happen
         e.preventDefault()
-
         if (mode === 'register') {
             await register(formState)
         } else {
             await signin(formState)
         }
         setFormState(initial)
+        console.log("hi")
+        console.log(formState)
         //Push adds a new route to the stack so if the user hits back they can 
         //Replace, replaces the existing stack so the user can't hit back
         router.replace('/home')
@@ -52,7 +54,7 @@ const registerContent = {
     const content = mode === 'register' ? registerContent : signinContent
 
     return(
-        <Card>
+        <Card className="">
         <div className="w-full">
           <div className="text-center">
             <h2 className="text-3xl mb-2">{content.header}</h2>
@@ -97,7 +99,6 @@ const registerContent = {
               <div className="text-lg mb-4 ml-2 text-black/50">Email</div>
               <Input
                 required
-                type="email"
                 placeholder="Email"
                 value={formState.email}
                 className="border-solid border-gray border-2 px-6 py-2 text-lg rounded-3xl w-full"
@@ -111,7 +112,6 @@ const registerContent = {
               <Input
                 required
                 value={formState.password}
-                type="password"
                 placeholder="Password"
                 className="border-solid border-gray border-2 px-6 py-2 text-lg rounded-3xl w-full"
                 onChange={(e) =>
@@ -123,6 +123,7 @@ const registerContent = {
               <div>
                 <span>
                   <Link
+                    prefetch
                     href={content.linkUrl}
                     className="text-blue-600 font-bold"
                   >
@@ -131,7 +132,7 @@ const registerContent = {
                 </span>
               </div>
               <div>
-                <Button type="submit" intent="secondary">
+                <Button intent="secondary">
                   {content.buttonText}
                 </Button>
               </div>
@@ -141,5 +142,3 @@ const registerContent = {
       </Card>
     )
   }
-
-  export default AuthForm
