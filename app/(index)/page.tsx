@@ -1,7 +1,7 @@
 export default function Home() {
   return (
    <div>
-    Page.tsx
+    Hello I am the Index Page
    </div>
   )
 }
