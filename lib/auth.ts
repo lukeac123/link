@@ -5,7 +5,7 @@ import { db } from "./db";
 // This is an async password by deafult so we have to await
 export const hashPassword = (password) => bcrypt.hash(password, 10);
 
-export const comparePassword = (plainTextPassword, hashPasswordPawword) => {
+export const comparePasswords = (plainTextPassword, hashPasswordPawword) => {
   return bcrypt.compare(plainTextPassword, hashPasswordPawword);
 };
 
@@ -37,7 +37,7 @@ export const validateJWT = async (jwt) => {
   return payload.payload as any; // type is going to be whatever is in the paylod, in this case an object
 };
 
-export const getUserFromCookie = (cookies) => {
+export const getUserFromCookie = async (cookies) => {
   const jwt = cookies.get(process.env.COOKIE_NAME);
 
   const { id } = await validateJWT(jwt.value);
