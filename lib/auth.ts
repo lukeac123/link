@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import { SignJWT, jwtVerify } from "jose";
-import db from "./db";
+import { db } from "./db";
 
 // This is an async password by deafult so we have to await
 export const hashPassword = (password) => bcrypt.hash(password, 10);
