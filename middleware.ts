@@ -1,6 +1,6 @@
 // Just a handler that runs, handles any route and we can manage errors. This means we need to be explicit about what requests we're handling
 // This middlerware is managing accesses to routes based on the user
-// NextJS middleware runs on edge
+// NextJS middleware runs on edge, onlt vercel and netlify covert a middleware file to run on edge. If deploying with someone else it wouldn't work
 
 import { NextResponse } from "next/server";
 import { jwtVerify } from "jose";

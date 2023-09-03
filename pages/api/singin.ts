@@ -36,6 +36,7 @@ export default async function signin(
         })
       );
       res.status(201);
+      // quick fix as was trying to parse json when nothing was beinf returned
       res.json({});
     } else {
       res.status(401);
@@ -43,6 +44,7 @@ export default async function signin(
     }
   } else {
     res.status(402);
+    // quick fix as was trying to parse json when nothing was beinf returned
     res.json({});
   }
 }
