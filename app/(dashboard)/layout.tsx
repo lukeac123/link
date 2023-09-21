@@ -4,7 +4,7 @@
 import GlassPane from "@/components/GlassPane";
 import "@/styles/global.css";
 import Sidebar from "@/components/Sidebar";
-import Greetings from "@/components/greetings";
+import Greetings from "@/components/Greeting";
 
 export default function DashboardRootLayour({ children }) {
   return (

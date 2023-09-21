@@ -1,8 +1,8 @@
-import Greetings from "@/components/greetings";
 import GreetingsSkeleton from "@/components/GreetingSkeleton";
 import NewProject from "@/components/NewProject";
 import ProjectCard from "@/components/ProjectCard";
 import TaskCard from "@/components/TaskCard";
+import Greetings from "@/components/Greetings";
 import { delay } from "@/lib/async";
 import { getUserFromCookie } from "@/lib/auth";
 import { db } from "@/lib/db";

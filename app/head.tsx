@@ -1,7 +1,7 @@
 export default function IndexPage() {
-    return(
-        <>
-        <title> Link </title>
-        </>
-    )
+  return (
+    <>
+      <title> Link </title>
+    </>
+  );
 }
