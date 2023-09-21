@@ -1,6 +1,6 @@
 // Seed data base, add in mock data to the data base so we can use it when coding the app
-// npx primsa migrate dev
-// npx primsa db seed - If command doesn't work delete primsa folder and start again with prisma init
+// npx prisma migrate dev
+// npx prisma db seed - If command doesn't work delete primsa folder and start again with prisma init
 
 import { hashPassword } from "@/lib/auth";
 import { db } from "@/lib/db";
@@ -23,7 +23,7 @@ async function main() {
       email: "user@email.com",
       firstName: "User",
       lastName: "Person",
-      password: "password",
+      password: await hashPassword("password"),
       projects: {
         create: new Array(5).fill(1).map((_, i) => ({
           name: `Project ${i}`,

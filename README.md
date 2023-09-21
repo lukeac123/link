@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Getting Started - Font End
 
 First, run the development server:
 
@@ -20,14 +20,29 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
-## Learn More
+## Getting Started - Data Base
 
-To learn more about Next.js, take a look at the following resources:
+Launch a new instance of a hosted postgress sql data base on [Railway](https://railway.app/) and copy in the new Data Base Url to the .env file
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Push the schema to the data base:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+npx prisma migrate dev
+```
+
+If this fails try reseting the data base:
+
+```bash
+ npx prisma migrate reset
+```
+
+Run the Seed script to add dummy data into the Database
+
+```bash
+ npx npx prisma db seed
+```
+
+To see cards from the seed user, login with the seed email address and password
 
 ## Deploy on Vercel
 

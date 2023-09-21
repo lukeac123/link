@@ -1,11 +1,12 @@
 const fetcher = async ({ url, method, body, json = true }) => {
   const res = await fetch(url, {
+    //add body field and spread over body object if body is true
     method,
     ...(body && { body: JSON.stringify(body) }),
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-    }, //add body field and spread over body object if body is true
+    },
   });
 
   if (!res.ok) {

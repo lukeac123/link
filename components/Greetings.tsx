@@ -7,6 +7,8 @@ import Button from "./Button";
 import Card from "./Card";
 import { delay } from "@/lib/async";
 
+// The data is retrieved in the page, this decouples the page and Greetings component so they load seaparately
+// It also enables us to manage the fallBack and shimmer the component until loaded
 const getData = async () => {
   await delay(5000);
   const user = await getUserFromCookie(cookies());
