@@ -39,7 +39,7 @@ If this fails try reseting the data base:
 Run the Seed script to add dummy data into the Database
 
 ```bash
- npx npx prisma db seed
+ npx prisma db seed
 ```
 
 To see cards from the seed user, login with the seed email address and password
