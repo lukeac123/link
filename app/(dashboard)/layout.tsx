@@ -4,7 +4,6 @@
 import GlassPane from "@/components/GlassPane";
 import "@/styles/global.css";
 import Sidebar from "@/components/Sidebar";
-import Greetings from "@/components/Greeting";
 
 export default function DashboardRootLayour({ children }) {
   return (
@@ -15,6 +14,8 @@ export default function DashboardRootLayour({ children }) {
           <Sidebar />
           {children}
         </GlassPane>
+        {/* This is needed to the modal defined in New Project knows where to render */}
+        <div id="modal"></div>
       </body>
     </html>
   );
