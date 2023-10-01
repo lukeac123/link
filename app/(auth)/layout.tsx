@@ -1,4 +1,4 @@
-// Layout need to have a html tag, so browser knows that it needs to render HTML
+// Layout needs to have a html tag, so browser knows that it needs to render HTML
 // Head tag is using the head from the head file defined in the root of the app dir
 
 import GlassPane from "@/components/GlassPane";

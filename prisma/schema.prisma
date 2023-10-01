@@ -1,5 +1,4 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// Every time this file chnages we need to sync the data base ( npx primsa migrate dev )
 
 generator client {
   provider = "prisma-client-js"

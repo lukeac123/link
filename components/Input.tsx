@@ -5,7 +5,7 @@
 
 import clsx from "clsx";
 
-const Input = ({ className, ...props }) => {
+export default function Input({ className, ...props }){
   return (
     <input
       className={clsx(
@@ -16,5 +16,3 @@ const Input = ({ className, ...props }) => {
     />
   );
 };
-
-export default Input;
