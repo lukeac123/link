@@ -6,7 +6,7 @@ import Button from "./Button";
 import Input from "./Input";
 
 // What is the issue with this ?
-// Modal.setAppElement("#modal");
+Modal.setAppElement("#modal");
 
 const NewProject = () => {
   const [modalIsOpen, setIsOpen] = useState(false);
